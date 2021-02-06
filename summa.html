@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style>
+    .sidebar {
+        position: fixed;
+        top: 40px;
+        left: 0;
+        display: block;
+        background-color: #1d1919;
+        color: white;
+        height: 100%;
+        border-radius: 0px 20px 0px 0px;
+        padding: 30px 10px 30px 10px;
+        text-align: center;
+        margin-left: 0px;
+        transition-property: margin-left;
+        transition-duration: 1s;
+        transition-timing-function: ease;
+    }
+
+    .sidebar-close {
+        margin-left: -1000px !important;
+    }
+
+    .sidebar-banner {
+        position: relative;
+        display: block;
+        text-align: center;
+        top: 10px;
+
+
+    }
+
+    .sidebar-banner img {
+        border-radius: 50%;
+        width: 30%;
+    }
+
+    .sidebar-banner hr {
+        background-color: white;
+        border: 1px solid black;
+        margin-bottom: 30px;
+    }
+
+
+    .sidebar a {
+        display: block;
+        color: white;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 15px;
+        transition-duration: 300ms;
+        transition-timing-function: ease;
+        transition-property: all;
+    }
+
+    .sidebar a.active {
+        background-color: #f8b739;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .sidebar a:hover:not(.active) {
+        background-color: rgb(22, 150, 235);
+        color: black;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .sidebar label {
+        position: absolute;
+        bottom: 40px;
+        left: 10px;
+        color: gray;
+    }
+
+    .sidebar-opener {
+        position: relative;
+        top: 40px;
+        left: 0%;
+        background-color: #f8b739;
+        color: white;
+        outline: none;
+        border: none;
+        transition-duration: 1.5s;
+
+    }
+
+    .sidebar-closer {
+        position: relative;
+        top: 40px;
+        left: 0%;
+        border: none;
+        padding: 0;
+        background: none;
+        color: white;
+        outline: none;
+        transition-duration: 1.5s;
+    }
+
+    .sidebar-opener:focus {
+        outline: none;
+    }
+
+    .sidebar-closer:focus {
+        outline: none;
+    }
+</style>
+
+<body>
+
+    <script>
+
+    </script>
+    <div class="sidebar sidebar-close col-4 col-md-2 col-lg-2" id="sidebar">
+
+        <div class="sidebar-banner ">
+            <img src="https://thestrangerbooks.com/wp-content/uploads/2020/08/tsb-avtar.png" alt="dp_here">
+            <p>Name</p>
+            <hr>
+        </div>
+        <a href="summa.html" class="active">Home</a>
+        <a href="">employee</a>
+        <a href="">rewinding</a>
+        <label for="">Last login</label>
+
+    </div>
+    <button id="sidebar-opener" class="sidebar-opener" onclick="sidebar(this.value)" value="open">☰</button>
+
+    <script>
+        function sidebar(str) {
+            var e = document.getElementById("sidebar-opener");
+            if (str == 'open') {
+                var s = document.getElementById("sidebar");
+                s.classList.remove("sidebar-close");
+                e.value = "close";
+                e.classList.remove("sidebar-opener");
+                e.classList.add("sidebar-closer");
+                e.innerHTML = "✖";
+            }
+            else if (str == 'close') {
+                var s = document.getElementById("sidebar");
+                s.classList.add("sidebar-close");
+                e.value = "open";
+                e.classList.add("sidebar-opener");
+                e.classList.remove("sidebar-closer");
+                e.innerHTML = "☰";
+            }
+        }
+    </script>
+
+
+
+</body>
+
+</html>
