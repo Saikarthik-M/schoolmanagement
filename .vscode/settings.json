@@ -1,0 +1,8 @@
+{
+    "powermode.enabled": true,
+    "powermode.presets": "particles",
+    "powermode.comboThreshold": 5,
+    "powermode.comboTimeout": 2,
+    "editor.formatOnSave": true,
+    "git.ignoreLimitWarning": true
+}

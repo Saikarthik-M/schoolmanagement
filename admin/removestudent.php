@@ -62,52 +62,55 @@ if (!isset($_SESSION["username"])) {
     <html>
 
     <body>
-        <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]) ?>" method="post">
-            <div>
-                <label for="rollno">Roll No</label>
-                <input type="text" name="rollno" pattern="^[A-Za-z0-9]+$" id="rollno" value="<?php echo isset($_GET["rollno"]) ? $_GET["rollno"] : "" ?>" required>
-                <?php
-                if (isset($_GET["error"]) && $_GET["error"] == '1') {
-                ?>
-                    <p>Roll no is not in the right format or already exists</p>
-                <?php
-                }
-                ?>
-            </div>
-            <div>
-                <label for="reason">Reason (within 50 letters including whitespace)</label>
-                <input type="text" name="reason" pattern="^[0-9a-zA-Z \/,.]{2,50}$" id="reason" value="<?php echo isset($_GET["reason"]) ? $_GET["reason"] : "" ?>" required>
-                <?php
-                if (isset($_GET["error"]) && $_GET["error"] == '2') {
-                ?>
-                    <p>Reason is not in the right format</p>
-                <?php
-                }
-                ?>
-            </div>
-            <input type="submit" value="Remove Student">
-            <?php
-            if (isset($_GET["success"])) {
-            ?>
-                <div class="toast" data-autohide=false>
-                    <div class="toast-header">
-                        <strong class="mr-auto text-success">Success</strong>
-                        <small class="text-muted">1 sec ago</small>
-                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" id="btn">&times;</button>
-                    </div>
-                    <div class="toast-body">
-                        Removed student successfully
-                    </div>
+        <div class="container mx-auto mt-3">
+            <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]) ?>" method="post">
+                <div class="form-group">
+                    <label for="rollno">Roll No</label>
+                    <input class="form-control" type="text" name="rollno" pattern="^[A-Za-z0-9]+$" id="rollno" value="<?php echo isset($_GET["rollno"]) ? $_GET["rollno"] : "" ?>" required>
+                    <?php
+                    if (isset($_GET["error"]) && $_GET["error"] == '1') {
+                    ?>
+                        <p>Roll no is not in the right format or already exists</p>
+                    <?php
+                    }
+                    ?>
                 </div>
-                <script>
-                    $(document).ready(function() {
-                        $('.toast').toast('show');
-                    });
-                </script>
-            <?php
-            }
-            ?>
-        </form>
+                <div class="form-group">
+                    <label for="reason">Reason (within 50 letters including whitespace)</label>
+                    <input class="form-control" type="text" name="reason" pattern="^[0-9a-zA-Z \/,.]{2,50}$" id="reason" value="<?php echo isset($_GET["reason"]) ? $_GET["reason"] : "" ?>" required>
+                    <?php
+                    if (isset($_GET["error"]) && $_GET["error"] == '2') {
+                    ?>
+                        <p>Reason is not in the right format</p>
+                    <?php
+                    }
+                    ?>
+                </div>
+                <input class="btn btn-danger" type="submit" value="Remove Student">
+                <?php
+                if (isset($_GET["success"])) {
+                ?>
+                    <div class="toast" data-autohide=false>
+                        <div class="toast-header">
+                            <strong class="mr-auto text-success">Success</strong>
+                            <small class="text-muted">1 sec ago</small>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" id="btn">&times;</button>
+                        </div>
+                        <div class="toast-body">
+                            Removed student successfully
+                        </div>
+                    </div>
+                    <script>
+                        $(document).ready(function() {
+                            $('.toast').toast('show');
+                        });
+                    </script>
+                <?php
+                }
+                ?>
+            </form>
+        </div>
+        <?php include_once '../footer.php' ?>
     </body>
 
     </html>

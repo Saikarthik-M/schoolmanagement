@@ -72,28 +72,30 @@ if (isset($_POST["productkey"])) {
 
     <body>
         <?php include_once '../navigation.php'; ?>
-        <div class="jumbotron container">
+        <div class="container">
             <div class="row">
-                <div class="col-md-6 col-sm-6 border-right border-success">
-                    <h1 class="display-4 row">New admin signup!</h1>
-                    <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]) ?>" method="post" class="row input-group">
-                        <label for="product">Product key</label>
-                        <input type="text" name="productkey" id="product" class="col-md-6 col-sm-6" required>
-                        <?php
-                        if (isset($_GET["error"]) && $_GET["error"] == '1') {
-                        ?>
-                            <p class="text-danger">Invalid product key</p>
-                        <?php
-                        }
-                        ?>
-                        <input type="submit" value="submit" class="text-center col-md-4 col-sm-3">
+                <div class="col-md-6 col-sm-6">
+                    <h1 class="display-4 text-center ">New admin signup!</h1>
+                    <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]) ?>" method="post">
+                        <div class="form-group">
+                            <label for="product">Product key</label>
+                            <input class="form-control" type="text" name="productkey" id="product" class="col-md-6 col-sm-6" required>
+                            <?php
+                            if (isset($_GET["error"]) && $_GET["error"] == '1') {
+                            ?>
+                                <p class="text-danger">Invalid product key</p>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                        <input class="btn btn-success" type="submit" value="submit" class="text-center col-md-4 col-sm-3">
                     </form>
                 </div>
 
-                <div class="col-md-6 col-sm-6">
-                    <h1 class="display-4 row">WELCOME admin!</h1>
-                    <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]) ?>" method="post" class="">
-                        <div class="row">
+                <div class="col-md-6 col-sm-6 ">
+                    <h1 class="display-4">WELCOME admin!</h1>
+                    <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]) ?>" method="post" class="jumbotron">
+                        <div class="form-group">
                             <?php
                             if (isset($_GET["error"]) && $_GET["error"] == '3') {
                             ?>
@@ -102,7 +104,7 @@ if (isset($_POST["productkey"])) {
                             }
                             ?>
                             <label for="username">Username</label>
-                            <input type="text" name="username" pattern="^[a-z0-9_]+$" id="username" class="col-md-6 col-sm-6" required>
+                            <input class="form-control" type="text" name="username" pattern="^[a-z0-9_]+$" id="username" class="col-md-6 col-sm-6" required>
                             <?php
                             if (isset($_GET["error"]) && $_GET["error"] == '4') {
                             ?>
@@ -111,21 +113,22 @@ if (isset($_POST["productkey"])) {
                             }
                             ?>
                         </div>
-                        <div class="row ">
+                        <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" name="password" pattern="^[a-zA-Z0-9]{8,15}$" id="password" class="col-md-6 col-sm-6 mt-2" required>
+                            <input class="form-control" type="password" name="password" pattern="^[a-zA-Z0-9]{8,15}$" id="password" class="col-md-6 col-sm-6 mt-2" required>
                         </div>
-                        <div class="row">
+                        <div class="form-group">
                             <input type="checkbox" name="rememberme" id="rememberme" value="1">
                             <label for="rememberme">Remember me</label>
                         </div>
-                        <div class="row ">
-                            <input type="submit" value="sign in" class="text-center col-md-4 col-sm-3">
+                        <div class="form-group text-center">
+                            <input class="btn btn-primary" type="submit" value="sign in" class="text-center col-md-4 col-sm-3">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+        <?php include_once '../footer.php' ?>
     </body>
 
     </html>

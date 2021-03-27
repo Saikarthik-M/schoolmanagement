@@ -16,10 +16,15 @@ if (!isset($_SESSION["username"])) {
 
     <body>
         <?php include_once '../navigation.php' ?>
-        <h1>Admin detail</h1>
-        <h6>Username : <?php echo $row["username"] ?></h6>
-        <h6>Email : <?php echo $row["email"] ?></h6>
-        <h6>Phone : <?php echo $row["phone"] ?></h6>
+        <div class="container mx-auto">
+            <h1 class="text-center">Admin detail</h1>
+            <div class="alert alert-success">
+                <p>Username : <strong> <?php echo $row["username"] ?></strong></p>
+                <p>Email : <strong> <?php echo $row["email"] ?> </strong></p>
+                <p>Phone : <strong><?php echo $row["phone"] ?> </strong></p>
+            </div>
+        </div>
+        <?php include_once '../footer.php' ?>
     </body>
 
     </html>

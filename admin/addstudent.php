@@ -128,243 +128,248 @@ if (!isset($_SESSION["username"])) {
     <html>
 
     <body>
-        <h1>Fill the student details</h1>
-        <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div>
-                <label for="name">Name (in capital with initial at end)</label>
-                <input type="text" name="name" pattern="^[A-Z ]+$" id="name" value="<?php echo isset($_GET["name"]) ? $_GET["name"] : "" ?>" required>
-                <?php
-                if (isset($_GET["error"]) && $_GET["error"] == '1') {
-                ?>
-                    <p>Name is not in the right format</p>
-                <?php
-                }
-                ?>
-            </div>
-            <div>
-                <label for="rollno">Roll No</label>
-                <input type="text" name="rollno" pattern="^[A-Za-z0-9]+$" id="rollno" value="<?php echo isset($_GET["rollno"]) ? $_GET["rollno"] : "" ?>" required>
-                <?php
-                if (isset($_GET["error"]) && $_GET["error"] == '7') {
-                ?>
-                    <p>Roll no is not in the right format or already exists</p>
-                <?php
-                }
-                ?>
-            </div>
-            <div>
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" value="<?php echo isset($_GET["email"]) ? $_GET["email"] : "" ?>" required>
-                <?php
-                if (isset($_GET["error"]) && $_GET["error"] == '3') {
-                ?>
-                    <p>Email is not in the right format</p>
-                <?php
-                }
-                ?>
-            </div>
-            <div>
-                <label for="address">Address (within 50 letters including whitespace)</label>
-                <input type="text" name="address" id="address" pattern="^[0-9a-zA-Z \/,.]{2,50}$" value="<?php echo isset($_GET["address"]) ? $_GET["address"] : "" ?>" required>
-                <?php
-                if (isset($_GET["error"]) && $_GET["error"] == '8') {
-                ?>
-                    <p>Address is not in the right format</p>
-                <?php
-                }
-                ?>
-            </div>
-            <div>
-                <label for="city">City</label>
-                <?php isset($_GET["city"]) ? $cityid = $_GET["city"] : $cityid = "129" ?>
-                <select name="city" id="city" required>
-                    <?php
-                    $citylist = ['Achankuttam', 'Adaiyakarunkulam', 'Aiyansingampatty', 'Aiyanthiruvaliswaram', 'Alangulam', 'Ambasamudram', 'Ayiraperi', 'Ayyanarkulam', 'Balapathiramapuram', 'Bramadesam', 'Cheranmahadevi', 'Gunaramanallur', 'Ilanji', 'Indra Nagar, Courtallam', 'K.pillaivalasai', 'Kadanganeri', 'Kaduvetti', 'Karisalpatty', 'Karuvantha', 'Kasimajorpuram', 'Kavalakuruchi', 'Keelakalangal', 'Keelaveeranam', 'Kidarakulam', 'Kodarankulam', 'Koniyoor', 'Kunnakudi', 'Kurichanpatty', 'Kurippankulam', 'Kuthukalvalasai', 'M.m.puram', 'Malayankulam', 'Mannarkoil', 'Maranthai', 'Marukalankulam', 'Mathalamparai', 'Mayamankuruchi', 'Melagaram', 'Melakalangal', 'Melapuliyur', 'Melaveeranam', 'Moolachi', 'N.krishnapuram', 'Nallur', 'Nannagaram, Courtallam', 'Naranapuram', 'Nettur', 'Padikkattupalli', 'Pattakuruchi', 'Pattapathu', 'Periyapillaivalasai', 'Piranoor', 'Pottal', 'Pudukudi', 'S.v.p.karadiudaippu', 'Sevalarkulam', 'Sillaripuravoo', 'Sivanthipuram', 'Subbihapuram', 'Sumaitherthanpuram', 'T.ariyanayagipuram', 'T.veeravanallur', 'Tenkasi', 'Tenkasi Vaikalpaalam', 'Thenpothai', 'Therkku Pappankulam', 'Thiruchittambalam', 'Thiruvirunthanpuli', 'Ulagankulam', 'Uthumalai', 'V. Kavalakuruchi', 'Vadakkukarukuruchi', 'Vadiyoor', 'Vagaikulam', 'Vairavikulam', 'Vallam', 'Vellanguli', 'Venkatarengapuram', 'Zamin Singampatty'];
-                    foreach ($citylist as $val) {
-                    ?>
-                        <option value="<?php echo $val; ?>" <?php echo $cityid == $val ? "selected" : "" ?>><?php echo $val; ?></option>
-                    <?php
-                    }
-                    ?>
-                </select>
-                <?php
-                if (isset($_GET["error"]) && $_GET["error"] == '12') {
-                ?>
-                    <p>city is not in the right format</p>
-                <?php
-                }
-                ?>
-            </div>
-            <div>
-                <label for="district">District</label>
-                <?php isset($_GET["district"]) ? $districtid = $_GET["district"] : $districtid = "129" ?>
-                <select name="district" id="district" required>
-                    <option value="Tirunelveli" <?php echo $districtid == "Tirunelveli" ? "selected" : "" ?>>Tirunelveli</option>
-                    <option value="Tenkasi" <?php echo $districtid == "Tenkasi" ? "selected" : "" ?>>Tenkasi</option>
-                </select>
-                <?php
-                if (isset($_GET["error"]) && $_GET["error"] == '13') {
-                ?>
-                    <p>District is not in the right format</p>
-                <?php
-                }
-                ?>
-            </div>
+        <div class="container mx-auto">
+            <h1 class="text-center">Fill the student details</h1>
+            <div class="jumbotron">
+                <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <div class="form-group">
+                        <label for="name">Name (in capital with initial at end)</label>
+                        <input class="form-control" type="text" name="name" pattern="^[A-Z ]+$" id="name" value="<?php echo isset($_GET["name"]) ? $_GET["name"] : "" ?>" required>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '1') {
+                        ?>
+                            <p>Name is not in the right format</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="rollno">Roll No</label>
+                        <input class="form-control" type="text" name="rollno" pattern="^[A-Za-z0-9]+$" id="rollno" value="<?php echo isset($_GET["rollno"]) ? $_GET["rollno"] : "" ?>" required>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '7') {
+                        ?>
+                            <p>Roll no is not in the right format or already exists</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input class="form-control" type="email" name="email" id="email" value="<?php echo isset($_GET["email"]) ? $_GET["email"] : "" ?>" required>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '3') {
+                        ?>
+                            <p>Email is not in the right format</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address (within 50 letters including whitespace)</label>
+                        <input class="form-control" type="text" name="address" id="address" pattern="^[0-9a-zA-Z \/,.]{2,50}$" value="<?php echo isset($_GET["address"]) ? $_GET["address"] : "" ?>" required>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '8') {
+                        ?>
+                            <p>Address is not in the right format</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <?php isset($_GET["city"]) ? $cityid = $_GET["city"] : $cityid = "129" ?>
+                        <select name="city" id="city" class="form-control" required>
+                            <?php
+                            $citylist = ['Achankuttam', 'Adaiyakarunkulam', 'Aiyansingampatty', 'Aiyanthiruvaliswaram', 'Alangulam', 'Ambasamudram', 'Ayiraperi', 'Ayyanarkulam', 'Balapathiramapuram', 'Bramadesam', 'Cheranmahadevi', 'Gunaramanallur', 'Ilanji', 'Indra Nagar, Courtallam', 'K.pillaivalasai', 'Kadanganeri', 'Kaduvetti', 'Karisalpatty', 'Karuvantha', 'Kasimajorpuram', 'Kavalakuruchi', 'Keelakalangal', 'Keelaveeranam', 'Kidarakulam', 'Kodarankulam', 'Koniyoor', 'Kunnakudi', 'Kurichanpatty', 'Kurippankulam', 'Kuthukalvalasai', 'M.m.puram', 'Malayankulam', 'Mannarkoil', 'Maranthai', 'Marukalankulam', 'Mathalamparai', 'Mayamankuruchi', 'Melagaram', 'Melakalangal', 'Melapuliyur', 'Melaveeranam', 'Moolachi', 'N.krishnapuram', 'Nallur', 'Nannagaram, Courtallam', 'Naranapuram', 'Nettur', 'Padikkattupalli', 'Pattakuruchi', 'Pattapathu', 'Periyapillaivalasai', 'Piranoor', 'Pottal', 'Pudukudi', 'S.v.p.karadiudaippu', 'Sevalarkulam', 'Sillaripuravoo', 'Sivanthipuram', 'Subbihapuram', 'Sumaitherthanpuram', 'T.ariyanayagipuram', 'T.veeravanallur', 'Tenkasi', 'Tenkasi Vaikalpaalam', 'Thenpothai', 'Therkku Pappankulam', 'Thiruchittambalam', 'Thiruvirunthanpuli', 'Ulagankulam', 'Uthumalai', 'V. Kavalakuruchi', 'Vadakkukarukuruchi', 'Vadiyoor', 'Vagaikulam', 'Vairavikulam', 'Vallam', 'Vellanguli', 'Venkatarengapuram', 'Zamin Singampatty'];
+                            foreach ($citylist as $val) {
+                            ?>
+                                <option value="<?php echo $val; ?>" <?php echo $cityid == $val ? "selected" : "" ?>><?php echo $val; ?></option>
+                            <?php
+                            }
+                            ?>
+                        </select>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '12') {
+                        ?>
+                            <p>city is not in the right format</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="district">District</label>
+                        <?php isset($_GET["district"]) ? $districtid = $_GET["district"] : $districtid = "129" ?>
+                        <select name="district" id="district" class="form-control" required>
+                            <option value="Tirunelveli" <?php echo $districtid == "Tirunelveli" ? "selected" : "" ?>>Tirunelveli</option>
+                            <option value="Tenkasi" <?php echo $districtid == "Tenkasi" ? "selected" : "" ?>>Tenkasi</option>
+                        </select>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '13') {
+                        ?>
+                            <p>District is not in the right format</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
 
 
-            <div>
-                <label for="dob">DOB</label>
-                <input type="date" name="dob" id="dob" value="<?php echo isset($_GET["dob"]) ? $_GET["dob"] : "" ?>" required>
-                <?php
-                if (isset($_GET["error"]) && $_GET["error"] == '15') {
-                ?>
-                    <p>DOB is not in the right format</p>
-                <?php
-                }
-                ?>
-            </div>
-            <div>
-                <label for="class">Class</label>
-                <?php isset($_GET["class"]) ? $classid = $_GET["class"] : $classid = "129" ?>
-                <select id="class" name="class" required>
+                    <div class="form-group">
+                        <label for="dob">DOB</label>
+                        <input class="form-control" type="date" name="dob" id="dob" value="<?php echo isset($_GET["dob"]) ? $_GET["dob"] : "" ?>" required>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '15') {
+                        ?>
+                            <p>DOB is not in the right format</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="class">Class</label>
+                        <?php isset($_GET["class"]) ? $classid = $_GET["class"] : $classid = "129" ?>
+                        <select id="class" name="class" class="form-control" required>
+                            <?php
+                            $class = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
+                            for ($sec = 0; $sec < 12; $sec++) {
+                            ?>
+                                <option value="<?php echo $sec + 1; ?>" <?php echo intval($classid) == $sec + 1 ? "selected" : "" ?>><?php echo $class[$sec]; ?></option>
+                            <?php
+                            }
+                            ?>
+                        </select>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '11') {
+                        ?>
+                            <p>Class is not in the right format</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="sec">Section</label>
+                        <?php isset($_GET["sec"]) ? $secid = $_GET["sec"] : $secid = "129" ?>
+                        <select id="sec" name="sec" class="form-control" required>
+                            <?php
+                            $section = ["A", "B", "C"];
+                            foreach ($section as $sec) {
+                            ?>
+                                <option value="<?php echo $sec; ?>" <?php echo $secid == $sec ? "selected" : "" ?>><?php echo $sec; ?></option>
+                            <?php
+                            }
+                            ?>
+                        </select>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '14') {
+                        ?>
+                            <p>Section is not in the right format</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="fathername">Father Name (in capital with initial at end)</label>
+                        <input class="form-control" type="text" name="fathername" pattern="^[A-Z ]+$" id="fathername" value="<?php echo isset($_GET["fathername"]) ? $_GET["fathername"] : "" ?>" required>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '2') {
+                        ?>
+                            <p>Father Name is not in the right format</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="mothername">Mother Name (in capital with initial at end)</label>
+                        <input class="form-control" type="text" name="mothername" pattern="^[A-Z ]+$" id="mothername" value="<?php echo isset($_GET["mothername"]) ? $_GET["mothername"] : "" ?>" required>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '3') {
+                        ?>
+                            <p>Mother Name is not in the right format</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="fatherphone">Father phone no</label>
+                        <input class="form-control" type="text" name="fatherphone" pattern="^[0-9]{10}$" id="fatherphone" value="<?php echo isset($_GET["fatherphone"]) ? $_GET["fatherphone"] : "" ?>" required>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '9') {
+                        ?>
+                            <p>Phone number must be 10 digit number</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="motherphone">Mother phone no</label>
+                        <input class="form-control" type="text" name="motherphone" pattern="^[0-9]{10}$" id="motherphone" value="<?php echo isset($_GET["motherphone"]) ? $_GET["motherphone"] : "" ?>" required>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '10') {
+                        ?>
+                            <p>Phone number must be 10 digit number</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="fatheroccupation">Father Occupation</label>
+                        <input class="form-control" type="text" name="fatheroccupation" pattern="^[a-zA-Z ]{1,30}$" id="fatheroccupation" value="<?php echo isset($_GET["fatheroccupation"]) ? $_GET["fatheroccupation"] : "" ?>" required>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '4') {
+                        ?>
+                            <p>Father occupation is not in the right format</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="motheroccupation">Mother Occupation</label>
+                        <input class="form-control" type="text" name="motheroccupation" pattern="^[a-zA-Z ]{1,30}$" id="motheroccupation" value="<?php echo isset($_GET["motheroccupation"]) ? $_GET["motheroccupation"] : "" ?>" required>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '5') {
+                        ?>
+                            <p>Mother occupation is not in the right format</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthcertificatenumber">Birth Certificate Number</label>
+                        <input class="form-control" type="text" name="birthcertificatenumber" pattern="^[0-9]{1,}$" id="birthcertificatenumber" value="<?php echo isset($_GET["birthcertificatenumber"]) ? $_GET["birthcertificatenumber"] : "" ?>" required>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '6') {
+                        ?>
+                            <p>Birth Certificate Number is not in the right format</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Add student">
                     <?php
-                    $class = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
-                    for ($sec = 0; $sec < 12; $sec++) {
+                    if (isset($_GET["success"])) {
                     ?>
-                        <option value="<?php echo $sec + 1; ?>" <?php echo intval($classid) == $sec + 1 ? "selected" : "" ?>><?php echo $class[$sec]; ?></option>
+                        <div class="toast" data-autohide=false>
+                            <div class="toast-header">
+                                <strong class="mr-auto text-success">Success</strong>
+                                <small class="text-muted">1 sec ago</small>
+                                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" id="btn">&times;</button>
+                            </div>
+                            <div class="toast-body">
+                                Added student successfully
+                            </div>
+                        </div>
+                        <script>
+                            $(document).ready(function() {
+                                $('.toast').toast('show');
+                            });
+                        </script>
                     <?php
                     }
                     ?>
-                </select>
-                <?php
-                if (isset($_GET["error"]) && $_GET["error"] == '11') {
-                ?>
-                    <p>Class is not in the right format</p>
-                <?php
-                }
-                ?>
+                </form>
             </div>
-            <div>
-                <label for="sec">Section</label>
-                <?php isset($_GET["sec"]) ? $secid = $_GET["sec"] : $secid = "129" ?>
-                <select id="sec" name="sec" required>
-                    <?php
-                    $section = ["A", "B", "C"];
-                    foreach ($section as $sec) {
-                    ?>
-                        <option value="<?php echo $sec; ?>" <?php echo $secid == $sec ? "selected" : "" ?>><?php echo $sec; ?></option>
-                    <?php
-                    }
-                    ?>
-                </select>
-                <?php
-                if (isset($_GET["error"]) && $_GET["error"] == '14') {
-                ?>
-                    <p>Section is not in the right format</p>
-                <?php
-                }
-                ?>
-            </div>
-            <div>
-                <label for="fathername">Father Name (in capital with initial at end)</label>
-                <input type="text" name="fathername" pattern="^[A-Z ]+$" id="fathername" value="<?php echo isset($_GET["fathername"]) ? $_GET["fathername"] : "" ?>" required>
-                <?php
-                if (isset($_GET["error"]) && $_GET["error"] == '2') {
-                ?>
-                    <p>Father Name is not in the right format</p>
-                <?php
-                }
-                ?>
-            </div>
-            <div>
-                <label for="mothername">Mother Name (in capital with initial at end)</label>
-                <input type="text" name="mothername" pattern="^[A-Z ]+$" id="mothername" value="<?php echo isset($_GET["mothername"]) ? $_GET["mothername"] : "" ?>" required>
-                <?php
-                if (isset($_GET["error"]) && $_GET["error"] == '3') {
-                ?>
-                    <p>Mother Name is not in the right format</p>
-                <?php
-                }
-                ?>
-            </div>
-            <div>
-                <label for="fatherphone">Father phone no</label>
-                <input type="text" name="fatherphone" pattern="^[0-9]{10}$" id="fatherphone" value="<?php echo isset($_GET["fatherphone"]) ? $_GET["fatherphone"] : "" ?>" required>
-                <?php
-                if (isset($_GET["error"]) && $_GET["error"] == '9') {
-                ?>
-                    <p>Phone number must be 10 digit number</p>
-                <?php
-                }
-                ?>
-            </div>
-            <div>
-                <label for="motherphone">Mother phone no</label>
-                <input type="text" name="motherphone" pattern="^[0-9]{10}$" id="motherphone" value="<?php echo isset($_GET["motherphone"]) ? $_GET["motherphone"] : "" ?>" required>
-                <?php
-                if (isset($_GET["error"]) && $_GET["error"] == '10') {
-                ?>
-                    <p>Phone number must be 10 digit number</p>
-                <?php
-                }
-                ?>
-            </div>
-            <div>
-                <label for="fatheroccupation">Father Occupation</label>
-                <input type="text" name="fatheroccupation" pattern="^[a-zA-Z ]{1,30}$" id="fatheroccupation" value="<?php echo isset($_GET["fatheroccupation"]) ? $_GET["fatheroccupation"] : "" ?>" required>
-                <?php
-                if (isset($_GET["error"]) && $_GET["error"] == '4') {
-                ?>
-                    <p>Father occupation is not in the right format</p>
-                <?php
-                }
-                ?>
-            </div>
-            <div>
-                <label for="motheroccupation">Mother Occupation</label>
-                <input type="text" name="motheroccupation" pattern="^[a-zA-Z ]{1,30}$" id="motheroccupation" value="<?php echo isset($_GET["motheroccupation"]) ? $_GET["motheroccupation"] : "" ?>" required>
-                <?php
-                if (isset($_GET["error"]) && $_GET["error"] == '5') {
-                ?>
-                    <p>Mother occupation is not in the right format</p>
-                <?php
-                }
-                ?>
-            </div>
-            <div>
-                <label for="birthcertificatenumber">Birth Certificate Number</label>
-                <input type="text" name="birthcertificatenumber" pattern="^[0-9]{1,}$" id="birthcertificatenumber" value="<?php echo isset($_GET["birthcertificatenumber"]) ? $_GET["birthcertificatenumber"] : "" ?>" required>
-                <?php
-                if (isset($_GET["error"]) && $_GET["error"] == '6') {
-                ?>
-                    <p>Birth Certificate Number is not in the right format</p>
-                <?php
-                }
-                ?>
-            </div>
-            <input type="submit" value="Submit">
-            <?php
-            if (isset($_GET["success"])) {
-            ?>
-                <div class="toast" data-autohide=false>
-                    <div class="toast-header">
-                        <strong class="mr-auto text-success">Success</strong>
-                        <small class="text-muted">1 sec ago</small>
-                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" id="btn">&times;</button>
-                    </div>
-                    <div class="toast-body">
-                        Added student successfully
-                    </div>
-                </div>
-                <script>
-                    $(document).ready(function() {
-                        $('.toast').toast('show');
-                    });
-                </script>
-            <?php
-            }
-            ?>
-        </form>
+        </div>
+        <?php include_once '../footer.php' ?>
     </body>
 
     </html>

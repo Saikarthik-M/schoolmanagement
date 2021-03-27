@@ -76,74 +76,72 @@ if (isset($_SESSION["productverify"])) {
     $productchecker = mysqli_query($conn, $productchecker);
     $row = mysqli_fetch_assoc($productchecker);
     if ($row["numbers"] == '1') {
-
+        include_once '../head.php'
 ?>
-        <html>
-
-        <head>
-            <title>signup here</title>
-        </head>
 
         <body>
-            <h1>Fill the details here</h1>
-            <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]) ?>" method="post">
-                <div class="row">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" pattern="^[a-z0-9_]+$" id="username" value="<?php echo isset($_GET["username"]) ? $_GET["username"] : "" ?>" required>
-                    <?php
-                    if (isset($_GET["error"]) && $_GET["error"] == '4') {
-                    ?>
-                        <p>Username is not in the right format</p>
-                    <?php
-                    }
-                    ?>
-                </div>
-                <div class="row">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" value="<?php echo isset($_GET["email"]) ? $_GET["email"] : "" ?>" required>
-                    <?php
-                    if (isset($_GET["error"]) && $_GET["error"] == '3') {
-                    ?>
-                        <p>Email is not in the right format</p>
-                    <?php
-                    }
-                    ?>
-                </div>
-                <div class="row">
-                    <label for="phone">Phone number</label>
-                    <input type="text" name="phone" id="phone" pattern="^[0-9]{10}$" value="<?php echo isset($_GET["phone"]) ? $_GET["phone"] : "" ?>" required>
-                    <?php
-                    if (isset($_GET["error"]) && $_GET["error"] == '2') {
-                    ?>
-                        <p>Phone number must be 10 digit number</p>
-                    <?php
-                    }
-                    ?>
-                </div>
-                <div class="row">
-                    <label for="password">Password</label>
-                    <input type="password" pattern="^[a-zA-Z0-9]{8,15}$" name="password" id="password" required>
-                    <?php
-                    if (isset($_GET["error"]) && $_GET["error"] == '1') {
-                    ?>
-                        <p>Password is not in the right format</p>
-                    <?php
-                    } else if (isset($_GET["error"]) && $_GET["error"] == '0') {
-                    ?>
-                        <p>Password and rewrite password mismatch</p>
-                    <?php
-                    }
-                    ?>
-                </div>
-                <div class="row">
-                    <label for="repassword">Re-write Password</label>
-                    <input type="password" pattern="^[a-zA-Z0-9]{8,15}$" name="repassword" id="repassword" required>
-                </div>
-                <input type="submit" value="Sign up">
-            </form>
+            <div class="container mx-auto mt-3">
+                <h1 class="text-center">Fill the details here</h1>
+                <form action="<?php echo htmlentities($_SERVER["PHP_SELF"]) ?>" method="post">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input class="form-control" type="text" name="username" pattern="^[a-z0-9_]+$" id="username" value="<?php echo isset($_GET["username"]) ? $_GET["username"] : "" ?>" required>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '4') {
+                        ?>
+                            <p>Username is not in the right format</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input class="form-control" type="email" name="email" id="email" value="<?php echo isset($_GET["email"]) ? $_GET["email"] : "" ?>" required>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '3') {
+                        ?>
+                            <p>Email is not in the right format</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone number</label>
+                        <input class="form-control" type="text" name="phone" id="phone" pattern="^[0-9]{10}$" value="<?php echo isset($_GET["phone"]) ? $_GET["phone"] : "" ?>" required>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '2') {
+                        ?>
+                            <p>Phone number must be 10 digit number</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input class="form-control" type="password" pattern="^[a-zA-Z0-9]{8,15}$" name="password" id="password" required>
+                        <?php
+                        if (isset($_GET["error"]) && $_GET["error"] == '1') {
+                        ?>
+                            <p>Password is not in the right format</p>
+                        <?php
+                        } else if (isset($_GET["error"]) && $_GET["error"] == '0') {
+                        ?>
+                            <p>Password and rewrite password mismatch</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="repassword">Re-write Password</label>
+                        <input class="form-control" type="password" pattern="^[a-zA-Z0-9]{8,15}$" name="repassword" id="repassword" required>
+                    </div>
+                    <input class="btn btn-warning text-dark mt-3" type="submit" value="Sign up">
+                </form>
+            </div>
+            <?php include_once '../footer.php' ?>
         </body>
 
-        </html>
+
     <?php
     }
 } else {
